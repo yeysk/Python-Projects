@@ -1,10 +1,5 @@
-"""
 
-TASK 6: ENCRYPTION AND DECRYPTION USING FIBONACCI SERIES and ASCII VALUES
-
-"""
-
-# çökmüyor. ama işlem bitince kapanıyor.
+ # TASK 6: ENCRYPTION AND DECRYPTION USING FIBONACCI SERIES and ASCII VALUES
 
 def fibonacci(n):
     fib_series = [0, 1]
@@ -34,38 +29,15 @@ def decryption(encrypted_text):
 
 while True:
     try:
-            plaintext = input("Please enter a text: ")
+            plaintext = input("\nPlease enter a text or press q to quit: ")
+            if plaintext == 'q':
+                break
             encrypted_text = encryption(plaintext) 
             print("\nEncrypted:", encrypted_text)
             decrypted_text = decryption(encrypted_text) 
             print("Decrypted:", decrypted_text) 
-           
-            """while True:
-                another = input("\nWould you like to do another operation?(Y/N): ").lower()
-                if another == 'y':
-                    print("\nMaking another operation...")
-                    break
-                elif another == 'n':
-                    print("quitting...")
-                    break
-                else:
-                    print("Invalid input!Try again.")"""
-            break
-                
     except ValueError:
             print("Invalid input. Try again.")
-
-    
-    
-"""another = input("\nAnother operation?(Y/N): ").lower()
-    
-    if another == 'y':
-        print("\nMaking another operation...")
-    elif another == 'n':
-        break
-    else:
-        print("Invalid input!")
-        break"""
         
         
         
