@@ -1,35 +1,39 @@
-"""
 
-TASK 5: INVENTORY MANAGEMENT SYSTEM
+# TASK 5: INVENTORY MANAGEMENT SYSTEM
 
-"""
 availableProducts = {
-    'bean': {
+    'product1': {
+        'name': 'bean',
         'kilos': 30,
         'buying price': 55,
         'selling price': 65,
-    },
-    'chickpea': {
+     },  
+    'product2': {
+        'name': 'chickpea',
         'kilos': 20,
         'buying price': 45,
         'selling price': 55,
     },
-   'macaroni': {
+   'product3': {
+         'name': 'macaroni',
         'kilos': 40,
         'buying price': 50,
         'selling price': 60,
     },
-    'rice': {
+    'product4': {
+        'name': 'rice',
         'kilos': 35,
         'buying price': 35,
         'selling price': 45,
     },
-    'red meat': {
+    'product5': {
+        'name': 'red meat',
         'kilos': 25,
         'buying price': 250,
         'selling price': 350,
    },
-    'chicken': {
+    'product6': {
+        'name': 'chicken',
         'kilos': 50,
         'buying price': 150,
         'selling price': 200,
@@ -42,65 +46,51 @@ while True:
     print("\n1. Show available products")
     print("2. Add Products")
     print("3. Remove Products")
+    print("4. Quit")
     
     try:
         userChoice = int(input("\nPlease choose an operation above: "))
         
         if (userChoice == 1):
             print("\nAvailable Products: ")
-            print(availableProducts)
+            for product_key, product in availableProducts.items():
+                print(f"Product Name: {product['name']}, Amount: {product['kilos']}, Buying price: {product['buying price']}, Selling Price : {product['selling price']}")
     
         elif(userChoice == 2):
-            add_product = True
-            while add_product:
-                newProducts = {}
-                name = input("\nName: ")
-                amount = input("Kilos: ")
-                buyingPrice = input("Buying Price: ")
-                sellingPrice = input("Selling Price: ")
-                newProducts["Name"] = name
-                newProducts["Amount"] = amount 
-                newProducts["Buying Price"] = buyingPrice
-                newProducts["Selling Price"] = sellingPrice
-                print(newProducts)
-                print("\nSuccessfully added!")
-                break
+           
                 
-                """anotherProduct = input("\nYes or no for another product?")
+            name = input("\nName: ")
+            amount = input("Kilos: ")
+            buyingPrice = input("Buying Price: ")
+            sellingPrice = input("Selling Price: ")
                 
-                if (anotherProduct == "yes"):
-                    add_product = True
-                else:
-                    add_product = False"""
+            product_id = 'product' + str(len(availableProducts) + 1)
+            availableProducts[product_id] = {'name': name, 'kilos': amount, 'buying price': buyingPrice, 'selling price': sellingPrice}
+            print("\nSuccessfully added!")
+            print(availableProducts)
+                
             
         elif (userChoice == 3):
-            remove_product = True
-            while remove_product:
-                removingProduct = input("\nName: ")
-                if removingProduct in  availableProducts:
-                    del availableProducts[removingProduct]
-                    print(f"\n{removingProduct} removed successfully.")
+            removingProduct = input("\nName: ").lower()
+            book_found = False
+            for product_key, product in list(availableProducts.items()):
+                if product['name'].lower() == removingProduct:
+                    del availableProducts[product_key]
+                    book_found = True
+                    print(f"\n{product['name']} removed successfully.")
                     print("\nUpdated Inventory:", availableProducts)
+                    break
+                
+            if not book_found:
+                print(f"\n{removingProduct} does not exist in the inventory.")
                     
-                    anotherRemoving = input("\nYes or no for another removing?")
-                    
-                    if (anotherRemoving == "yes"):
-                        remove_product = True
-                    else:
-                        remove_product = False
-                else:
-                    print(f"\n{removingProduct} does not exist in the inventory.")
-                    
-                    """anotherRemoving = input("\nYes or no for another removing?")
-                    
-                    if (anotherRemoving == "yes"):
-                        remove_product = True
-                    else:
-                        remove_product = False"""
+        elif (userChoice == 4):
+            print("Quitting...")
+            break
         else:
-            print("Geçersiz seçim.Tekrar deneyiniz.")
+            print("Invalid choice.Try again.")
     except ValueError:
-        print("Lütfen sadece rakam giriniz.")
+        print("Input numbers only.")
         
     
 
