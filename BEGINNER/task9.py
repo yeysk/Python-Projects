@@ -18,13 +18,13 @@ while True:
             else:
                 word_counter[word] = 1
         
-        # Finding the max frequency.
+        # En yüksek frekansı bulma
         max_frequency = max(word_counter.values())
         
-        # Adding the most repeated words into the list.
+        # En sık tekrar eden kelimeleri listeye ekleme
         most_repeated_words = [word for word, count in word_counter.items() if count == max_frequency]
         
-        # Printing the most repeated words and their frequency.
+        # En sık tekrar eden kelimeleri ve tekrar sayısını ekrana yazdırma
         if len(most_repeated_words) > 1:
             print(f"\nThe most repeated words: {', '.join(most_repeated_words)} used ({max_frequency} times each.)")
         else:
@@ -32,7 +32,7 @@ while True:
         
         seperators = ['.', '?', '!']
         
-        # Finding the number of the sentences.
+        # Cümle sayısını bulma
         for seperator in seperators:
             text = text.replace(seperator, '|')
             
@@ -41,7 +41,7 @@ while True:
         sentence_count = len([sentence for sentence in sentences if sentence.strip()])
         print(f"\nNumber of sentences in the text: {sentence_count}")
         
-        # Finding the average length of the words.
+        # Ortalama kelime uzunluğunu bulma
         total_length = sum(len(word) for word in textList)
         word_number = len(textList)
         
