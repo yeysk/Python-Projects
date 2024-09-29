@@ -1,6 +1,5 @@
 
-    
-# GÖREV 3: HESAP MAKİNESİ
+   # GÖREV 3: HESAP MAKİNESİ
 
 import math
 
@@ -18,7 +17,8 @@ def toplama_islemi():
             break
         except ValueError:
             print("Sadece sayı giriniz.")
-    return x + y
+    return "Sonuç:", x + y
+    
    
 def cıkarma_islemi():
     while True:
@@ -34,7 +34,7 @@ def cıkarma_islemi():
             break
         except ValueError:
             print("Sadece sayı giriniz.")
-    return  x - y
+    return "Sonuç:", x - y
 
 def carpma_islemi():
     while True:
@@ -51,7 +51,7 @@ def carpma_islemi():
         except ValueError:
             print("Sadece sayı giriniz.")
         
-    return x * y
+    return "Sonuç:", x * y
 
 def bolme_islemi():
     
@@ -68,17 +68,22 @@ def bolme_islemi():
        
     return ""
 
-def faktöriyel_hesapla(n):
-    try:
-       if  n == 1 or n == 0:
-            return 1
-       elif n < 1:
-            return "Negatif sayıların faktöriyeli hesaplanamaz!"
-       else:
-            return (n * faktöriyel_hesapla(n-1))
-    except RecursionError:
-        print("Sayı çok büyük!")
-
+def faktöriyel_hesapla():
+    while True:
+        try:
+            sayi = int(input("\nLütfen faktöriyelini bulmak istediğiniz sayıyı giriniz:"))
+            faktoriyel = 1
+             
+            if sayi >= 0:
+                for i in range(1, sayi + 1):
+                    faktoriyel *= i
+                print(f"Girdiğiniz sayının faktöriyeli: {sayi}! = {faktoriyel}")
+                break
+            else:
+                print("Negatif sayıların faktöriyeli olmaz!")
+        except ValueError:
+            print("Geçersiz giriş.Tekrar deneyiniz.")
+    return ""
 def us_alma():
     while True:
         try:
@@ -95,26 +100,21 @@ def us_alma():
             print("Sadece sayı giriniz.")
         except OverflowError:
             print("Sayı çok büyük.")
-    return x**y
+    return "Sonuç:", x**y
 
 def mod_alma():
     while True:
         try:
             x = float(input("\nİlk sayıyı giriniz: "))
-            break
-        except ValueError:
-            print("Sadece sayı giriniz.")
-   
-    while True:
-        try:
             y = float(input("\nİkinci sayıyı giriniz: "))
+            mod = x % y
+            print("Sonuç", mod)
             break
         except ValueError:
             print("Sadece sayı giriniz.")
         except ZeroDivisionError:
-            print("Sayı 0 a bölünemez.")
-    mod = x % y
-    return mod   
+            print("0 dışında bir sayı giriniz.")
+    return ""   
     
 def kok_hesapla():
     while True:
@@ -173,6 +173,7 @@ def menu():
             print("6. Üs Alma")
             print("7. Mod Alma")
             print("8. İkinci Dereceden Denklem Çözme")
+            print("9. Çıkış")
             
             islem_no = int(input("\nLütfen bir işlem numarası seçiniz: "))
                 
@@ -189,8 +190,7 @@ def menu():
                 print(bolme_islemi())
                 
             elif islem_no == 5:
-                x = int(input("Bir sayı giriniz: "))
-                print(faktöriyel_hesapla(x))
+                print(faktöriyel_hesapla())
                 
             elif islem_no == 6:  
                 print(us_alma())
@@ -200,35 +200,15 @@ def menu():
                 
             elif islem_no == 8:
                 print(kok_hesapla())
-            break    
+            elif islem_no == 9:
+                print("Çıkış yapılıyor...")
+                break 
+            else:
+                print("Böyle bir işlem mevcut değildir.Lütfen tekrar deneyiniz.")
         except ValueError:
             print("Geçersiz giriş.Tekrar deneyin.")
         
-    cont = True
-    while cont:
-        tekrar = input("\nYeni bir işlem yapmak ister misiniz?(E/H): ").lower()
-        if tekrar == 'e':
-            menu()
-            cont = False
-        elif tekrar == 'h':
-            print("Program sonlandırılıyor...")
-            return ""
-        else:
-            print("Geçersiz giriş! Lütfen sadece E veya H girin.")
-        
 menu()
-
-"""
-try:
-    x = float(input("\nİlk sayıyı giriniz: "))
-    y = float(input("\nİkinci sayıyı giriniz: "))
-    print(f"{x}/{y}={round(x/y,4)}")
-    break
-except ValueError:
-    print("Sadece sayı giriniz.")
-except ZeroDivisionError:
-    print("0 dışında bir sayı giriniz.")
-"""
         
 
     
