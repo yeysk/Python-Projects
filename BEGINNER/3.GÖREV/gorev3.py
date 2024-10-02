@@ -93,15 +93,11 @@ def us_alma():
             print("Sadece sayı giriniz.")
    
     while True:
-        try:
+       try:
             y = float(input("\nİkinci sayıyı giriniz: "))
-            break
-        except ValueError:
-            print("Sadece sayı giriniz.")
-        except OverflowError:
-            print("Sayı çok büyük.")
-    return "Sonuç:", x**y
-
+            return "Sonuç:", x**y
+        except Exception as e:
+            print(e)
 def mod_alma():
     while True:
         try:
