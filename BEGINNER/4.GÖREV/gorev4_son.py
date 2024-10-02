@@ -38,18 +38,14 @@ def main():
             seviyeNo = int(input("\nSeviye no giriniz: "))
             
             if (seviyeNo == 1):
-               
-                print("Bilgisayarın tuttuğu sayı: ", sayi1)
                 bilgisayarTuttu = sayi1
                 tahmin()
                 break
             elif (seviyeNo == 2):
-                print("Bilgisayarın tuttuğu sayı: ", sayi2)
                 bilgisayarTuttu = sayi2
                 tahmin()
                 break
             elif (seviyeNo == 3):
-                print("Bilgisayarın tuttuğu sayı: ", sayi3)
                 bilgisayarTuttu = sayi3
                 tahmin()
                 break
